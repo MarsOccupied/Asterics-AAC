@@ -2,19 +2,31 @@
     <div @dragenter="preventDefault" @dragover="preventDefault" @drop="imageDropped">
         <div class="srow">
             <label for="inputImg" class="two columns">{{ $t('image') }}</label>
-            <button onclick="document.getElementById('inputImg').click();" class="three columns file-input">
-                <input type="file" class="five columns" id="inputImg" @change="changedImg($event.target)" accept="image/png, image/jpeg, image/webp, image/svg+xml, image/gif"/>
-                <span><i class="fas fa-file-upload"/> <span>{{ $t('chooseFile') }}</span></span>
-            </button>
-            <button onclick="document.getElementById('inputImgCamera').click();" class="three columns file-input take-photo">
-                <input type="file" id="inputImgCamera" @change="changedImg($event.target)" accept="image/png, image/jpeg, image/webp, image/svg+xml, image/gif" capture="environment"/>
-                <span><i class="fas fa-camera"/> <span>{{ $t('takePhoto') }}</span></span>
-            </button>
-            <button class="three columns" @click="searchText = gridElement.label[i18nService.getContentLang()]; searchInput(0);">
-                <i class="fas fa-search"></i>
-                <span>{{ $t('searchByLabel') }}</span>
-            </button>
-            <button class="three columns" v-show="hasImage" @click="clearImage"><i class="fas fa-times"/> <span>{{ $t('clearImage') }}</span></button>
+            <div class="ten columns">
+                <div class="row gx-3">
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <button onclick="document.getElementById('inputImg').click();" class="u-full-width file-input">
+                            <input type="file" id="inputImg" @change="changedImg($event.target)" accept="image/png, image/jpeg, image/webp, image/svg+xml, image/gif"/>
+                            <span><i class="fas fa-file-upload"/> <span>{{ $t('chooseFile') }}</span></span>
+                        </button>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 take-photo">
+                        <button onclick="document.getElementById('inputImgCamera').click();" class="u-full-width file-input">
+                            <input type="file" id="inputImgCamera" @change="changedImg($event.target)" accept="image/png, image/jpeg, image/webp, image/svg+xml, image/gif" capture="environment"/>
+                            <span><i class="fas fa-camera"/> <span>{{ $t('takePhoto') }}</span></span>
+                        </button>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <button class="u-full-width" @click="searchText = gridElement.label[i18nService.getContentLang()]; searchInput(0);">
+                            <i class="fas fa-search"></i>
+                            <span>{{ $t('searchByLabel') }}</span>
+                        </button>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3" v-show="hasImage">
+                        <button class="u-full-width" @click="clearImage"><i class="fas fa-times"/> <span>{{ $t('clearImage') }}</span></button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="srow d-flex align-items-center">
             <div class="offset-by-two five columns">
