@@ -213,7 +213,7 @@
                 this.grids = await dataService.getGrids(false, true);
                 let metadata = await dataService.getMetadata();
                 this.homeGridId = metadata.homeGridId;
-                if (Router.getCurrentView() === Router.VIEWS.GridView) {
+                if (!this.routeToEdit) {
                     this.vocabularyLevel = gridUtil.getCurrentVocabularyLevel(metadata);
                 }
                 for (let grid of this.grids) {
